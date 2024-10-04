@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YouTube Playlist Duration Calculator</title>
+  <style>
+    /* General styles */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #f06d6d, #f7d88c, #add8e6);
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: background-color 0.5s, color 0.5s;
+    }
+
+    /* Dark Mode */
+    body.dark-mode {
+      background: #333;
+      color: #fff;
+    }
+
+    /* Header styles */
+    header {
+      position: absolute;
+      top: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    nav a {
+      margin-left: 20px;
+      text-decoration: none;
+      color: #333;
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    /* Dark Mode Header */
+    body.dark-mode .logo, body.dark-mode nav a {
+      color: #fff;
+    }
+
+    .toggle-btn {
+      cursor: pointer;
+    }
+
+    /* Main section styles */
+    .main-section {
+      text-align: center;
+      margin-top: 100px;
+    }
+
+    h1 {
+      font-size: 36px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 18px;
+      margin-bottom: 30px;
+    }
+
+    input[type="text"] {
+      padding: 10px;
+      width: 350px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+      margin-right: 10px;
+    }
+
+    .clipboard-icon {
+      cursor: pointer;
+      font-size: 20px;
+      vertical-align: middle;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      nav {
+        margin-top: 10px;
+      }
+
+      input[type="text"] {
+        width: 100%;
+        margin: 0;
+        margin-bottom: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header Section -->
+  <header>
+    <div class="logo">Rexoxer.</div>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">Services</a>
+      <a href="#">About Us</a>
+      <a href="#">Contact Us</a>
+    </nav>
+    <div class="toggle-btn" onclick="toggleDarkMode()">🌙</div>
+  </header>
+
+  <!-- Main Section -->
+  <div class="main-section">
+    <h1>YouTube Playlist Duration Calculator</h1>
+    <p>Figure out how long a YouTube playlist is:</p>
+    <input type="text" id="playlistUrl" placeholder="Please Paste Your YouTube Playlist URL">
+    <span class="clipboard-icon" onclick="pasteUrl()">📋</span>
+    <div id="result"></div>
+  </div>
+
+  <script>
+    // Toggle dark/light mode
+    function toggleDarkMode() {
+      document.body.classList.toggle('dark-mode');
+    }
+
+    // Paste from clipboard functionality
+    function pasteUrl() {
+      navigator.clipboard.readText()
+        .then(text => {
+          document.getElementById('playlistUrl').value = text;
+        })
+        .catch(err => {
+          console.error('Failed to read clipboard contents: ', err);
+        });
+    }
+
+    // Placeholder function for fetching YouTube playlist duration
+    function fetchPlaylistDuration(playlistUrl) {
+      // This function would typically call the YouTube API to fetch the playlist duration
+      console.log("Fetching playlist duration for: " + playlistUrl);
+      // Placeholder result
+      document.getElementById('result').innerHTML = "Playlist duration: 2 hours 35 minutes";
+    }
+
+    // Fetch playlist duration when input loses focus (example)
+    document.getElementById('playlistUrl').addEventListener('blur', function() {
+      const url = this.value;
+      if (url) {
+        fetchPlaylistDuration(url);
+      }
+    });
+  </script>
+
+</body>
+</html>
