@@ -1,5 +1,6 @@
 
 # Rexoxer - YouTube Playlist Duration Calculator
+Live link:- https://isande3p.github.io/yt-playlist-duration/
 
 **Rexoxer** is a simple web tool that calculates the total duration of a YouTube playlist. This project features a clean, minimalistic design with a gradient background, easy-to-use input for pasting YouTube playlist URLs, and a theme toggle for switching between light and dark modes. 
 
